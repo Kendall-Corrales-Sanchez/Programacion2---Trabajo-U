@@ -11,6 +11,9 @@ import javax.mail.SendFailedException;
 import javax.mail.internet.AddressException;
 import Servicios.ServicioPatrono;
 import AccesoDatos.AccesoDatosEmpleados;
+import Entidades.Deducciones;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,6 +24,7 @@ public class LogicaNominas implements ServicioPatrono {
     private String datosEnviar;
     private CrearPatronoPDF objCrearPatronoPDF = new CrearPatronoPDF();
     private AccesoDatosEmpleados objAccesoDatosEmpleados = new AccesoDatosEmpleados();
+    private LogicaEmpleados logicaEmpleados;
     
 
     /**
@@ -51,8 +55,6 @@ public class LogicaNominas implements ServicioPatrono {
      */
     public void datosCorreoPatrono(Nominas objNominas) {
         rebajaPatrono(objNominas);
-
-        
 
         datosEnviar = objNominas.getTotalPagar() + "," // 0 contiene el total a pagar
                 + objAccesoDatosEmpleados.getAdministrador() + "," // 1 contiene el correo del patrono
@@ -97,12 +99,30 @@ public class LogicaNominas implements ServicioPatrono {
      * @throws DocumentException Si ocurre un error al crear el documento.
      * @throws FileNotFoundException Si no se encuentra el archivo especificado.
      */
-    public void crearPDF(Nominas objNominas) throws DocumentException, FileNotFoundException {
+    @Override
+    public void crearPDF(Nominas objNominas) throws DocumentException, FileNotFoundException, IOException {
         objCrearPatronoPDF = new CrearPatronoPDF();
+        LogicaDeducciones logicaDeducciones = new LogicaDeducciones();
         objCrearPatronoPDF.setNombreArchivo("Reporte Nomina.pdf");
         datosCorreoPatrono(objNominas);
+        
+        Deducciones deducciones = new Deducciones();
+        logicaEmpleados = new LogicaEmpleados();
+        logicaEmpleados.leerEmpleado(deducciones);
+        
+        List<Deducciones> listaDeducciones = new ArrayList<>();
+        
+        for (String[] strings : deducciones.getEmpleadosLista()) {
+            
+            Deducciones deduccionesNew = new Deducciones();
+            deduccionesNew.setNombre(strings[1]);
+            deduccionesNew.setSalarioBruto(Double.parseDouble(strings[4]));
+            logicaDeducciones.rebajaSalario(deduccionesNew);
+            listaDeducciones.add(deduccionesNew);
+        }
+        
         objCrearPatronoPDF.setRegistro(datosEnviar);
-        objCrearPatronoPDF.createPDF();
+        objCrearPatronoPDF.createPDF(listaDeducciones);
     }
 
 }

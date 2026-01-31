@@ -549,7 +549,7 @@ public class VentanaCorreo extends javax.swing.JFrame {
             objCorreo.setMensaje(txtMensaje.getText());
             objCorreo.setMensajePDF(txtMensajePDF.getText());
             objCorreo.setCorreo(txtCorreo.getText());
-            objEmpleados.setSalarioBruto(Double.parseDouble(txtSalarioBruto.getText()));
+            objCorreo.setSalarioBruto(Double.parseDouble(txtSalarioBruto.getText()));
 
         } catch (Exception e) {
             System.out.print(e);

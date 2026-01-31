@@ -42,10 +42,8 @@ public class VentanaPlantilla extends javax.swing.JFrame {
      * Identificador único del empleado (entero). - Nombre: Nombre completo del
      * empleado (cadena). - Contraseña: Contraseña del empleado (cadena). -
      * Correo: Correo electrónico del empleado (cadena).
-     *
-     *
      */
-    public void CargarEmpleados() {
+        public void CargarEmpleados() {
 
         modeloTablaEmpleados = new DefaultTableModel();
 
@@ -247,10 +245,6 @@ public class VentanaPlantilla extends javax.swing.JFrame {
 
     private void bttAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAgregarActionPerformed
 
-        
-        
-        
-        
         try {
             objEmpleados = new Empleados();
             servicioEmpleado = new LogicaEmpleados();

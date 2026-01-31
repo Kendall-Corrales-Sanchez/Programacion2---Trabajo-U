@@ -4,8 +4,6 @@
  */
 package Servicios;
 
-import Entidades.Correos;
-import Entidades.Empleados;
 import Entidades.Nominas;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;
@@ -22,6 +20,6 @@ public interface ServicioPatrono {
 
     void enviarCorreos(Nominas objNominas) throws AddressException, SendFailedException, MessagingException, IOException;
 
-    void crearPDF(Nominas objNominas) throws DocumentException, FileNotFoundException;
+    void crearPDF(Nominas objNominas) throws DocumentException, FileNotFoundException, IOException;
 
 }

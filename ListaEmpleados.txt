@@ -1,7 +1,5 @@
 1,Kendall,123,kendallcorralessanchez@gmail.com,400000.0
 2,Lionel,321,messi@gmail.com,1000000.0
 3,Rocky,3214,Balboa@gmail.com,50000.0
-4,Josbel,55,Josbel@gmail.com,10000.0
 5,Samuel,5,samuel@gmail.com,50000.0
-6,vemonpenenergo,penenegros,verga@gmail.com,2.3290038631E10
 10,kendalljugador,1212,lolnoob@gmail.com,1.0
