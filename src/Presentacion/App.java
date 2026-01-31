@@ -1,5 +1,16 @@
 package Presentacion;
 
+import Entidades.Deducciones;
+import Entidades.Empleados;
+import Entidades.Nominas;
+import LogicaNegocio.LogicaEmpleados;
+import LogicaNegocio.LogicaNominas;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Empresaurio50

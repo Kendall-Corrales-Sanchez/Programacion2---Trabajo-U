@@ -1,7 +1,6 @@
 package Entidades;
 
 import java.util.ArrayList;
-
 /**
  *
  * @author Empresaurio50
@@ -70,7 +69,7 @@ public class Empleados {
      *
      * @return Una lista de empleados.
      */
-    public ArrayList<String[]> getEmpleadosLista() {
+    public ArrayList<String[]> getEmpleadosLista() {    
         return empleadosLista;
     }
 
@@ -81,7 +80,7 @@ public class Empleados {
      * @param empleadosLista La nueva lista de empleados como un objeto
      * `ArrayList<String[]>`.
      */
-    public void setEmpleadosLista(ArrayList<String[]> empleadosLista) {
+    public void setEmpleadosLista(ArrayList empleadosLista) {
         this.empleadosLista = empleadosLista;
     }
 

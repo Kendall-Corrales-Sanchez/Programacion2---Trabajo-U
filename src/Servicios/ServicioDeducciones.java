@@ -5,7 +5,6 @@
 package Servicios;
 
 import Entidades.Deducciones;
-import Entidades.Nominas;
 import Exepciones.CustomException;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;
