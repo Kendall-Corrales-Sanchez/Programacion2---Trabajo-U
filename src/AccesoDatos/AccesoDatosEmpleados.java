@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class AccesoDatosEmpleados {
 
     private String nombreArchivo, registro, buscarCorreo, buscarPassword,
-            administrador = "empresaurio50@gmail.com", contraAdmin = "123";
+            administrador = "kendallcorralessanchez@gmail.com", contraAdmin = "123";
 
     public String getAdministrador() {
         return administrador;
