@@ -182,12 +182,11 @@ public class VentanaPatrono extends javax.swing.JFrame {
 
             
             servicioPatrono.crearPDF(objNominas);
-            servicioPatrono.enviarCorreos(objNominas);
+            servicioPatrono.enviarCorreoPatrono(objNominas);
             JOptionPane.showMessageDialog(null, "Se le envio un PDF a su correo");
             
 
         } catch (IOException e) {
-
             JOptionPane.showMessageDialog(null, "El archivo ya esta creado");
         } catch (DocumentException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());

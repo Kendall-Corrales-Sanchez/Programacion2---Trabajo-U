@@ -21,5 +21,6 @@ public interface ServicioPatrono {
     void enviarCorreos(Nominas objNominas) throws AddressException, SendFailedException, MessagingException, IOException;
 
     void crearPDF(Nominas objNominas) throws DocumentException, FileNotFoundException, IOException;
-
+    
+    void enviarCorreoPatrono(Nominas objNominas) throws AddressException, SendFailedException, MessagingException, IOException;
 }
