@@ -111,7 +111,7 @@ public class EnviarCorreo {
         seccionSMTP = Session.getInstance(propertiesSMTP, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("empresaurio50@gmail.com", "dlnbvvsuukznqcpx");
+                return new PasswordAuthentication("empresaurio50@gmail.com", "wjon ltpj mxdb exom");
             }
         });
 
