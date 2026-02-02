@@ -18,7 +18,7 @@ public class EnviarCorreo {
     private Session seccionSMTP = null;
     private ArrayList<BodyPart> adjuntos = new ArrayList<>();
     private ArrayList<File> archivos = new ArrayList<>();
-    private String nombrePDF;
+    private String nombrePDF, datos, patronoDatos;
 
     /**
      * Obtiene el nombre del archivo PDF.
@@ -37,8 +37,6 @@ public class EnviarCorreo {
     public void setNombrePDF(String nombrePDF) {
         this.nombrePDF = nombrePDF;
     }
-
-    private String datos;
 
     /**
      * Obtiene la lista de archivos.
@@ -76,6 +74,13 @@ public class EnviarCorreo {
         this.datos = datos;
     }
 
+    public String getPatronoDatos() {
+        return patronoDatos;
+    }
+
+    public void setPatronoDatos(String patronoDatos) {
+        this.patronoDatos = patronoDatos;
+    }
     /**
      * Carga la configuración del servidor SMTP desde un archivo de texto.
      *
@@ -172,6 +177,44 @@ public class EnviarCorreo {
             // Crear mensaje
             BodyPart objBodyPart = new MimeBodyPart();
             objBodyPart.setText(datosU[4]); //mensaje
+
+            // Crear multipart 
+            Multipart objMultipart = new MimeMultipart();
+
+            // Configurar el contenido del mensaje con el multipart
+            objMultipart.addBodyPart(objBodyPart);
+            if (getArchivos() != null) {
+                crearArchivos();
+                for (BodyPart adjunto : adjuntos) {
+                    objMultipart.addBodyPart(adjunto);
+                }
+            }
+
+            objCorreo.setContent(objMultipart);
+
+            // Enviar el correo
+            Transport.send(objCorreo);
+
+        } finally {
+        }
+    }
+    public void EnviarCorreoPatrono() throws AddressException, SendFailedException, MessagingException, IOException {
+
+        cargarConfiguracionSMTP();
+
+        crearSeccion();
+
+        setArchivos(new File(nombrePDF));
+        try {
+            // Crear objeto
+            Message objCorreo = new MimeMessage(seccionSMTP);
+            objCorreo.setFrom(new InternetAddress("empresaurio50@gmail.com"));// user del servidor
+            objCorreo.setRecipients(Message.RecipientType.TO, InternetAddress.parse("kendallcorralessanchez@gmail.com"));//datosU 1 es el correo
+            objCorreo.setSubject("Informe de la nomina patrono");//datosU 3 es el asunto
+
+            // Crear mensaje
+            BodyPart objBodyPart = new MimeBodyPart();
+            objBodyPart.setText("Por este medio se realiza la entrega del resumen de la nomina patrono"); //mensaje
 
             // Crear multipart 
             Multipart objMultipart = new MimeMultipart();

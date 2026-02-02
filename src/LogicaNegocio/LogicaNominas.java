@@ -88,6 +88,15 @@ public class LogicaNominas implements ServicioPatrono {
         objEnviarCorreo.EnviarCorreos();
     }
 
+    
+    public void enviarCorreoPatrono(Nominas objNominas) throws AddressException, SendFailedException, MessagingException, IOException {
+        EnviarCorreo objEnviarCorreo = new EnviarCorreo();
+        objEnviarCorreo.setNombrePDF(objCrearPatronoPDF.getNombreArchivo());
+        datosCorreoPatrono(objNominas);
+        objEnviarCorreo.EnviarCorreoPatrono();
+    }
+    
+    
     /**
      * Crea un archivo PDF con los datos de las deducciones del salario.
      *
